@@ -1,0 +1,490 @@
+{
+  "vendors": [
+    {
+      "id": "2411147-saruwar-faruq-cafe",
+      "name": "Saruwar Café",
+      "location": "Mahallah Al-Faruq, Ground Floor",
+      "openHours": "7:00 am - 10:00 pm",
+      "isOpen": true,
+      "menu": [
+        {
+          "id": "2411147-m1",
+          "name": "Nasi Lemak Ayam",
+          "description": "Coconut rice served with fried chicken, sambal, egg, peanuts, and anchovies.",
+          "price": 8.5,
+          "category": "Rice",
+          "available": true,
+          "popular": true
+        },
+        {
+          "id": "2411147-m2",
+          "name": "Mee Goreng Mamak",
+          "description": "Stir-fried noodles with egg, vegetables, tofu, and a savoury-spicy sauce.",
+          "price": 6.5,
+          "category": "Noodles",
+          "available": false,
+          "popular": true
+        },
+        {
+          "id": "2411147-m3",
+          "name": "Chicken Fried Rice",
+          "description": "Wok-fried rice with chicken, egg, and mixed vegetables.",
+          "price": 7,
+          "category": "Rice",
+          "available": true,
+          "popular": false
+        },
+        {
+          "id": "2411147-m4",
+          "name": "Roti Canai",
+          "description": "Flaky Malaysian flatbread served with dhal curry.",
+          "price": 2.5,
+          "category": "Snacks",
+          "available": true,
+          "popular": true
+        },
+        {
+          "id": "2411147-m5",
+          "name": "Teh Tarik",
+          "description": "Classic Malaysian pulled milk tea, served chilled.",
+          "price": 2.5,
+          "category": "Drinks",
+          "available": true,
+          "popular": true
+        },
+        {
+          "id": "2411147-m6",
+          "name": "Nasi Ayam",
+          "description": "Fragrant chicken rice served with roasted chicken, cucumber, soup, and chilli sauce.",
+          "price": 8,
+          "category": "Rice",
+          "available": true,
+          "popular": false
+        },
+        {
+          "id": "2411147-m7",
+          "name": "Char Kuey Teow",
+          "description": "Wok-fried flat rice noodles with egg, bean sprouts, chives, and prawns.",
+          "price": 8.5,
+          "category": "Noodles",
+          "available": true,
+          "popular": true
+        },
+        {
+          "id": "2411147-m8",
+          "name": "Curry Puff",
+          "description": "Crispy pastry filled with spiced potato and chicken.",
+          "price": 2,
+          "category": "Snacks",
+          "available": true,
+          "popular": false
+        },
+        {
+          "id": "2411147-m9",
+          "name": "Milo Ais",
+          "description": "Iced Malaysian Milo chocolate malt drink.",
+          "price": 3,
+          "category": "Drinks",
+          "available": true,
+          "popular": true
+        },
+        {
+          "id": "2411147-m10",
+          "name": "Kuih Seri Muka",
+          "description": "Traditional two-layer kuih with pandan custard and glutinous rice.",
+          "price": 2.5,
+          "category": "Snacks",
+          "available": true,
+          "popular": false
+        },
+        {
+          "id": "2411147-m11",
+          "name": "Keropok Lekor",
+          "description": "Chewy fish crackers, lightly fried and served with sweet chilli sauce.",
+          "price": 4,
+          "category": "Snacks",
+          "available": true,
+          "popular": true
+        },
+        {
+          "id": "2411147-m12",
+          "name": "Pisang Goreng",
+          "description": "Crispy battered banana fritters served warm.",
+          "price": 3,
+          "category": "Snacks",
+          "available": true,
+          "popular": true
+        }
+      ]
+    },
+    {
+      "id": "2411147-pakistani-kitchen",
+      "name": "Pakistani Kitchen",
+      "location": "Mahallah Uthman, Ground Floor",
+      "openHours": "8:00 am - 9:00 pm",
+      "isOpen": true,
+      "menu": [
+        {
+          "id": "2411147-m13",
+          "name": "Chicken Biryani",
+          "description": "Fragrant basmati rice cooked with spiced chicken and served with raita.",
+          "price": 10.0,
+          "category": "Rice",
+          "available": true,
+          "popular": true
+        },
+        {
+          "id": "2411147-m14",
+          "name": "Beef Nihari",
+          "description": "Slow-cooked beef stew with traditional spices, served with naan.",
+          "price": 12.0,
+          "category": "Curries",
+          "available": true,
+          "popular": true
+        },
+        {
+          "id": "2411147-m15",
+          "name": "Chicken Karahi",
+          "description": "Chicken cooked in a rich tomato, ginger, and chilli karahi sauce.",
+          "price": 11.0,
+          "category": "Curries",
+          "available": true,
+          "popular": true
+        },
+        {
+          "id": "2411147-m16",
+          "name": "Seekh Kebab",
+          "description": "Grilled minced-meat kebabs seasoned with Pakistani spices.",
+          "price": 8.0,
+          "category": "Grills",
+          "available": true,
+          "popular": false
+        },
+        {
+          "id": "2411147-m17",
+          "name": "Aloo Paratha",
+          "description": "Pan-fried flatbread stuffed with spiced potato.",
+          "price": 4.0,
+          "category": "Snacks",
+          "available": true,
+          "popular": true
+        },
+        {
+          "id": "2411147-m18",
+          "name": "Samosa",
+          "description": "Crispy pastry filled with spiced potatoes and peas.",
+          "price": 2.5,
+          "category": "Snacks",
+          "available": true,
+          "popular": true
+        },
+        {
+          "id": "2411147-m19",
+          "name": "Chana Chaat",
+          "description": "Chickpeas tossed with potatoes, herbs, and tangy chutney.",
+          "price": 5.0,
+          "category": "Snacks",
+          "available": true,
+          "popular": false
+        },
+        {
+          "id": "2411147-m20",
+          "name": "Mango Lassi",
+          "description": "Chilled yogurt drink blended with sweet mango.",
+          "price": 4.5,
+          "category": "Drinks",
+          "available": true,
+          "popular": true
+        },
+        {
+          "id": "2411147-m21",
+          "name": "Doodh Patti Chai",
+          "description": "Pakistani milk tea simmered with strong tea and cardamom.",
+          "price": 3.0,
+          "category": "Drinks",
+          "available": true,
+          "popular": true
+        }
+      ]
+    },
+    {
+      "id": "2410829-kafe-ali",
+      "name": "Kafe Mahallah Ali",
+      "location": "Mahallah Ali, Block C",
+      "openHours": "7:00 am - 10:00 pm",
+      "isOpen": true,
+      "menu": [
+        {
+          "id": "2410829-m1",
+          "name": "Nasi Lemak Ayam",
+          "description": "Coconut rice, fried chicken, sambal, egg and peanuts",
+          "price": 7.5,
+          "available": true,
+          "category": "Rice",
+          "popular": true
+        },
+        {
+          "id": "2410829-m2",
+          "name": "Mee Goreng",
+          "description": "Fried noodles with vegetables and egg",
+          "price": 5.5,
+          "available": true,
+          "category": "Noodles",
+          "popular": true
+        },
+        {
+          "id": "2410829-m3",
+          "name": "Roti Canai",
+          "description": "Flaky flatbread served with dhal curry",
+          "price": 2.0,
+          "available": true,
+          "category": "Bread",
+          "popular": false
+        },
+        {
+          "id": "2410829-m4",
+          "name": "Nasi Goreng",
+          "description": "Malaysian fried rice",
+          "price": 6.0,
+          "available": true,
+          "category": "Rice",
+          "popular": true
+        },
+        {
+          "id": "2410829-m5",
+          "name": "Chicken Fried Rice",
+          "description": "Fried rice with chicken",
+          "price": 7.0,
+          "available": true,
+          "category": "Rice",
+          "popular": false
+        },
+        {
+          "id": "2410829-m6",
+          "name": "Maggi Goreng",
+          "description": "Stir-fried instant noodles",
+          "price": 5.0,
+          "available": true,
+          "category": "Noodles",
+          "popular": false
+        },
+        {
+          "id": "2410829-m7",
+          "name": "Teh Tarik",
+          "description": "Malaysian pulled milk tea",
+          "price": 2.5,
+          "available": true,
+          "category": "Drinks",
+          "popular": true
+        },
+        {
+          "id": "2410829-m8",
+          "name": "Milo Ais",
+          "description": "Iced chocolate malt drink",
+          "price": 3.0,
+          "available": true,
+          "category": "Drinks",
+          "popular": false
+        }
+      ]
+    },
+    {
+      "id": "2410829-coffee",
+      "name": "Campus Coffee Corner",
+      "location": "IIUM Campus Centre",
+      "openHours": "8:00 am - 8:00 pm",
+      "isOpen": true,
+      "menu": [
+        {
+          "id": "2410829-m9",
+          "name": "Iced Latte",
+          "description": "Espresso with chilled milk",
+          "price": 6.5,
+          "available": true,
+          "category": "Drinks",
+          "popular": true
+        },
+        {
+          "id": "2410829-m10",
+          "name": "Chocolate Muffin",
+          "description": "Soft chocolate muffin",
+          "price": 4.0,
+          "available": true,
+          "category": "Bakery",
+          "popular": false
+        },
+        {
+          "id": "2410829-m11",
+          "name": "Chicken Sandwich",
+          "description": "Chicken sandwich with fresh vegetables",
+          "price": 7.0,
+          "available": true,
+          "category": "Food",
+          "popular": true
+        }
+      ]
+    },
+    {
+      "id": "2417377-aubasani-kitchen",
+      "name": "Aubasani Bistro",
+      "location": "Mahallah Ali, Level 1",
+      "openHours": "8:00 am - 10:00 pm",
+      "isOpen": true,
+      "menu": [
+        {
+          "id": "2417377-aub-1",
+          "name": "Chicken Shawarma Wrap",
+          "description": "Spiced grilled chicken wrapped in pita with garlic sauce and pickles",
+          "price": 8.5,
+          "category": "Wraps",
+          "available": true,
+          "popular": true
+        },
+        {
+          "id": "2417377-aub-2",
+          "name": "Beef Falafel Wrap",
+          "description": "Crispy falafel patties and seasoned beef wrapped with tahini sauce",
+          "price": 9.0,
+          "category": "Wraps",
+          "available": true,
+          "popular": false
+        },
+        {
+          "id": "2417377-aub-3",
+          "name": "Mandi Rice with Lamb",
+          "description": "Traditional slow-cooked fragrant rice served with tender lamb shank",
+          "price": 15.0,
+          "category": "Rice",
+          "available": true,
+          "popular": true
+        },
+        {
+          "id": "2417377-aub-4",
+          "name": "Kabsah Chicken Rice",
+          "description": "Aromatic spiced rice served with roasted half chicken and tomato salsa",
+          "price": 12.0,
+          "category": "Rice",
+          "available": true,
+          "popular": true
+        },
+        {
+          "id": "2417377-aub-5",
+          "name": "Hummus with Pita Bread",
+          "description": "Creamy chickpea dip topped with olive oil and served with warm pita",
+          "price": 5.0,
+          "category": "Sides",
+          "available": true,
+          "popular": false
+        },
+        {
+          "id": "2417377-aub-6",
+          "name": "Garlic Fries",
+          "description": "Crispy golden potato fries tossed in garlic butter and herbs",
+          "price": 4.0,
+          "category": "Sides",
+          "available": true,
+          "popular": false
+        },
+        {
+          "id": "2417377-aub-7",
+          "name": "Fresh Mango Lassi",
+          "description": "Chilled yogurt drink blended with sweet ripe mangoes",
+          "price": 4.5,
+          "category": "Drinks",
+          "available": false,
+          "popular": true
+        },
+        {
+          "id": "2417377-aub-8",
+          "name": "Fresh Mint Lemonade",
+          "description": "Refreshing freshly squeezed lemonade blended with mint leaves and ice",
+          "price": 3.5,
+          "category": "Drinks",
+          "available": true,
+          "popular": true
+        }
+      ]
+    },
+    {
+      "id": "2414121-shaqnomnom",
+      "name": "ShaqNomNom",
+      "location": "Mahallah Ali, Canteen",
+      "openHours": "7:00 am - 10:00 pm",
+      "isOpen": true,
+      "menu": [
+        {
+          "id": "2414121-m1",
+          "name": "Butter Chicken Masala",
+          "description": "Gourmet, creamy, rich and a drop of sweetness. Paired well with our Garlic-Butter Naan",
+          "price": 15,
+          "category": "Curries",
+          "available": true,
+          "popular": true
+        },
+        {
+          "id": "2414121-m2",
+          "name": "Garlic-Butter Naan",
+          "description": "Aroma of fresh garlic, just enough butter lathered to infuse into the Naan. Our signature dough is a popular choice.",
+          "price": 6,
+          "category": "Breads",
+          "available": true,
+          "popular": true
+        },
+        {
+          "id": "2414121-m3",
+          "name": "NanaariZah",
+          "description": "A south-indian 1st choice lemonade (Nanaari) combined with North-indian extract (Roohafzah), to give a refreshing blast.",
+          "price": 2.5,
+          "category": "Drinks",
+          "available": false,
+          "popular": false
+        },
+        {
+          "id": "2414121-m4",
+          "name": "Paneer Tikka",
+          "description": "Smoky grilled cottage cheese cubes with mint chutney",
+          "price": 12,
+          "category": "Starters",
+          "available": true,
+          "popular": false
+        },
+        {
+          "id": "2414121-m5",
+          "name": "Chicken Biryani",
+          "description": "Fragrant basmati rice layered with spiced chicken",
+          "price": 13,
+          "category": "Rice",
+          "available": true,
+          "popular": true
+        },
+        {
+          "id": "2414121-m6",
+          "name": "Dal Tadka",
+          "description": "Yellow lentils tempered with garlic, cumin and ghee",
+          "price": 9,
+          "category": "Curries",
+          "available": true,
+          "popular": false
+        },
+        {
+          "id": "2414121-m7",
+          "name": "Mango Lassi",
+          "description": "Thick, chilled yogurt drink blended with sweet mango",
+          "price": 4,
+          "category": "Drinks",
+          "available": true,
+          "popular": true
+        },
+        {
+          "id": "2414121-m8",
+          "name": "Gulab Jamun",
+          "description": "Soft milk dumplings soaked in rose-cardamom syrup",
+          "price": 5,
+          "category": "Desserts",
+          "available": true,
+          "popular": false
+        }
+      ]
+    }
+  ]
+}
