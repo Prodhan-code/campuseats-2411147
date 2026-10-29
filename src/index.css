@@ -1,10 +1,7 @@
 /* =====================================================================
-   CampusEats starter CSS (BICS 3301): complete, Weeks 1 to 11
-   Paste ALL of this into src/index.css once, in Week 1, and leave it.
-   Rules for later weeks (cart, forms, login, dashboard, offline banner…)
-   do nothing until you build the components that use them.
-   You do not need to write CSS in this course; focus on React.
+   CampusEats starter CSS (BICS 3301): Weeks 1 to 11
    ===================================================================== */
+
 :root {
   --green: #00685e;
   --green-light: #e6f2f0;
@@ -12,16 +9,21 @@
   --muted: #616e7c;
   --bg: #f7f8fa;
   --radius: 12px;
+
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   color: var(--text);
   background: var(--bg);
 }
+
 * {
   box-sizing: border-box;
 }
+
 body {
   margin: 0;
 }
+
+/* Header and navigation */
 .header {
   display: flex;
   justify-content: space-between;
@@ -30,135 +32,138 @@ body {
   background: var(--green);
   color: #fff;
 }
+
 .logo {
   margin: 0;
   font-size: 1.4rem;
 }
-.nav {
-  display: flex;
-  gap: 1.25rem;
-}
-.nav a {
+
+.logo-link {
   color: #fff;
   text-decoration: none;
 }
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.6rem;
+  border-radius: 8px;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.nav a:hover {
+  background-color: rgba(255, 255, 255, 0.14);
+}
+
+.nav a.active {
+  box-shadow: none;
+  border-bottom: 2px solid #fff;
+  border-radius: 0;
+}
+
 .badge {
+  padding: 0 0.5rem;
+  border-radius: 999px;
   background: #fff;
   color: var(--green);
-  border-radius: 999px;
-  padding: 0 0.5rem;
-  font-weight: 700;
   font-size: 0.85rem;
+  font-weight: 700;
 }
+
+/* Page layout */
 .container {
   max-width: 960px;
   margin: 0 auto;
   padding: 1.5rem;
 }
+
 .section-title {
-  font-size: 1.2rem;
   margin: 1.5rem 0 0.75rem;
+  font-size: 1.2rem;
 }
+
+/* Cards and grids */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1rem;
 }
-.card {
-  background: #fff;
-  border-radius: var(--radius);
-  padding: 1rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-}
-.card h2, .card h3 {
-  margin: 0 0 0.25rem;
-}
-.vendor-card {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-.thumb {
-  width: 64px;
-  height: 64px;
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  background: var(--green-light);
-  color: var(--green);
-  border-radius: var(--radius);
-  font-size: 1.6rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-.muted {
-  color: var(--muted);
-  margin: 0.2rem 0;
-  font-size: 0.9rem;
-}
-.price {
-  font-weight: 700;
-  margin: 0.5rem 0;
-}
-.status {
-  display: inline-block;
-  margin-top: 0.4rem;
-  padding: 0.1rem 0.6rem;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-.status.open {
-  background: #e3f7e8;
-  color: #1b7a3a;
-}
-.status.closed {
-  background: #fdecea;
-  color: #b3261e;
-}
-.btn {
-  width: 100%;
-  padding: 0.55rem;
-  border: 0;
-  border-radius: 8px;
-  background: var(--green);
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
-}
-.btn:disabled {
-  background: #c5cbd3;
-  cursor: not-allowed;
-}
-.footer {
-  text-align: center;
-  color: var(--muted);
-  padding: 2rem 1rem;
-  font-size: 0.85rem;
-}
-/* Week 2 additions */
+
 .vendor-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1rem;
 }
-button.card {
-  font: inherit;
-  color: inherit;
-  text-align: left;
-  border: 2px solid transparent;
-  cursor: pointer;
-  width: 100%;
+
+.card {
+  padding: 1rem;
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
-button.card:hover {
-  border-color: var(--green-light);
+
+.card h2,
+.card h3 {
+  margin: 0 0 0.25rem;
 }
-.vendor-card.selected {
-  border-color: var(--green);
-}
+
 .card h3 {
   font-size: 1.05rem;
 }
+
+button.card {
+  width: 100%;
+  border: 2px solid transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+button.card:hover,
+a.card:hover {
+  border-color: var(--green-light);
+}
+
+.vendor-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.vendor-card.selected {
+  border-color: var(--green);
+}
+
+a.card {
+  border: 2px solid transparent;
+  color: inherit;
+  text-decoration: none;
+}
+
+.thumb {
+  display: grid;
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 0.5rem;
+  place-items: center;
+  border-radius: var(--radius);
+  background: var(--green-light);
+  color: var(--green);
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
 .tag {
   display: inline-block;
   margin: 0 0 0.3rem;
@@ -169,81 +174,207 @@ button.card:hover {
   font-size: 0.75rem;
   font-weight: 600;
 }
-/* Week 3 additions */
-.link {
-  background: none;
+
+/* Text, prices, and vendor status */
+.muted {
+  margin: 0.2rem 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.price {
+  margin: 0.5rem 0;
+  font-weight: 700;
+}
+
+.status {
+  display: inline-block;
+  margin-top: 0.4rem;
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status.open {
+  background: #e3f7e8;
+  color: #1b7a3a;
+}
+
+.status.closed {
+  background: #fdecea;
+  color: #b3261e;
+}
+
+/* Buttons and links */
+.btn {
+  width: 100%;
+  padding: 0.55rem;
   border: 0;
-  padding: 0;
-  font: inherit;
+  border-radius: 8px;
+  background: var(--green);
   color: #fff;
+  font-weight: 600;
   cursor: pointer;
 }
+
+.btn:disabled {
+  background: #c5cbd3;
+  cursor: not-allowed;
+}
+
+.btn-outline {
+  margin-top: 0.5rem;
+  border: 1px solid var(--green);
+  background: #fff;
+  color: var(--green);
+}
+
+.btn-small {
+  width: auto;
+  padding: 0.4rem 0.8rem;
+}
+
+.link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
 .link.danger {
   color: #b3261e;
   font-size: 0.9rem;
 }
+
+.container a {
+  color: var(--green);
+}
+
+.container a.card {
+  color: inherit;
+}
+
+/* Footer */
+.footer {
+  padding: 2rem 1rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* Week 3: cart and checkout */
 .cart-layout {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 1rem;
   align-items: start;
+  gap: 1rem;
 }
-@media (max-width: 720px) {
-  .cart-layout {
-    grid-template-columns: 1fr;
-  }
-}
+
 .cart-list {
-  list-style: none;
   margin: 0;
   padding: 0;
+  list-style: none;
 }
+
 .cart-line {
   display: grid;
-  grid-template-columns: 1fr auto auto auto;
-  gap: 1rem;
+  grid-template-columns: minmax(150px, 1fr) auto auto auto;
   align-items: center;
+  gap: 1rem;
   padding: 0.75rem 0;
   border-bottom: 1px solid #e4e7eb;
 }
+
 .cart-name {
   margin: 0;
   font-weight: 600;
 }
+
 .qty {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
+
 .qty button {
   width: 32px;
   height: 32px;
-  border-radius: 8px;
   border: 1px solid #c5cbd3;
+  border-radius: 8px;
   background: #fff;
-  cursor: pointer;
   font-size: 1.1rem;
+  cursor: pointer;
 }
+
 .line-total {
-  font-weight: 600;
   margin: 0;
+  font-weight: 600;
 }
+
 .cart-total {
-  text-align: right;
+  margin: 1rem 0 0;
   font-size: 1.15rem;
   font-weight: 700;
-  margin: 1rem 0 0;
+  text-align: right;
 }
+
+.cart-note {
+  grid-column: 1 / -1;
+  max-width: 460px;
+  margin-top: 0.25rem;
+}
+
+.cart-note label {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: var(--text);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.cart-note textarea {
+  display: block;
+  width: 100%;
+  height: 44px;
+  min-height: 44px;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #d5dbe3;
+  border-radius: 8px;
+  background: #fbfcfd;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.9rem;
+  resize: vertical;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.cart-note textarea::placeholder {
+  color: #8793a1;
+}
+
+.cart-note textarea:focus {
+  outline: none;
+  border-color: var(--green);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(0, 104, 94, 0.12);
+}
+
+/* Checkout form and validation messages */
 .form {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
 }
+
 .form label {
-  font-weight: 600;
-  font-size: 0.9rem;
   margin-top: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
+
 .form input,
 .form select {
   padding: 0.5rem;
@@ -251,76 +382,54 @@ button.card:hover {
   border-radius: 8px;
   font: inherit;
 }
+
 .form .btn {
   margin-top: 1rem;
 }
+
 .field-error {
+  margin: 0;
   color: #b3261e;
   font-size: 0.85rem;
-  margin: 0;
 }
+
 .error {
   border-left: 4px solid #b3261e;
 }
-/* Week 4 additions */
-.nav a.active {
-  text-decoration: underline;
-  text-underline-offset: 6px;
-}
-.logo-link {
-  color: #fff;
-  text-decoration: none;
-}
-a.card {
-  text-decoration: none;
-  color: inherit;
-  border: 2px solid transparent;
-}
-a.card:hover {
-  border-color: var(--green-light);
-}
-.container a {
-  color: var(--green);
-}
+
+/* Week 4: routing and orders */
 .order-list {
-  list-style: none;
-  padding: 0;
   display: grid;
   gap: 0.75rem;
+  padding: 0;
+  list-style: none;
 }
-.container a.card {
-  color: inherit;
-}
-/* Week 5 additions */
+
+/* Week 5: login */
 .auth-page {
   max-width: 420px;
   margin: 2rem auto;
 }
+
 .auth-page h2 {
   margin: 0 0 0.5rem;
 }
-.btn-outline {
-  background: #fff;
-  color: var(--green);
-  border: 1px solid var(--green);
-  margin-top: 0.5rem;
-}
+
 .user-name {
-  opacity: 0.9;
   font-size: 0.9rem;
+  opacity: 0.9;
 }
-.nav {
-  align-items: center;
-}
-/* Week 6 additions */
+
+/* Week 6: order status */
 .status-steps {
   display: flex;
-  gap: 0.4rem;
-  list-style: none;
-  padding: 0;
-  margin: 0.5rem 0 0;
   flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
 }
+
 .status-steps li {
   padding: 0.15rem 0.6rem;
   border-radius: 999px;
@@ -329,40 +438,123 @@ a.card:hover {
   font-size: 0.8rem;
   font-weight: 600;
 }
+
 .status-steps li.done {
   background: var(--green);
   color: #fff;
 }
-/* Week 7 additions */
+
+/* Week 7: dashboard */
 .row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
 }
-.btn-small {
-  width: auto;
-  padding: 0.4rem 0.8rem;
-}
+
 .dash-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
+  align-items: start;
   gap: 1rem;
   margin-top: 1rem;
-  align-items: start;
 }
-@media (max-width: 720px) {
+
+.photo {
+  width: 100%;
+  height: 140px;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Today's Special heading and description */
+.special-heading {
+  margin-bottom: 1rem;
+}
+
+.special-label {
+  display: inline-block;
+  margin: 0 0 0.35rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid #f0c75e;
+  border-radius: 999px;
+  background: #fff4d6;
+  color: #7a4b00;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 6px rgba(122, 75, 0, 0.15);
+}
+
+.special-label::before {
+  content: '★ ';
+  color: #d58a00;
+}
+
+.special-heading p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+/* Actions on each Today's Special card */
+.special-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.special-actions .btn {
+  width: auto;
+  padding: 0.5rem 0.75rem;
+}
+
+/* Match menu card hover to the vendor card hover */
+.grid > .card {
+  border: 2px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.grid > .card:hover {
+  border-color: var(--green-light);
+}
+
+/* Week 9: responsive layout */
+@media (max-width: 640px) {
+  .header {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    gap: 0.4rem 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  .cart-line {
+    grid-template-columns: 1fr auto;
+    gap: 0.75rem;
+  }
+
+  .cart-note {
+    max-width: none;
+  }
+
+  .cart-layout,
   .dash-grid {
     grid-template-columns: 1fr;
   }
 }
-.photo {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 0.5rem;
-}
+
 /* Week 10: service worker messages */
 .toast {
   position: fixed;
@@ -372,58 +564,46 @@ a.card:hover {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  background: #12302d;
-  color: #fff;
   padding: 0.75rem 1rem;
   border-radius: var(--radius);
+  background: #12302d;
+  color: #fff;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
+
 .toast button {
-  background: #e8a33d;
-  color: #12302d;
+  padding: 0.4rem 0.8rem;
   border: 0;
   border-radius: 8px;
-  padding: 0.4rem 0.8rem;
+  background: #e8a33d;
+  color: #12302d;
   font-weight: 600;
   cursor: pointer;
 }
+
 .toast button.link-dark {
   background: transparent;
   color: #bfd8d5;
   text-decoration: underline;
 }
+
 /* Week 11: offline-first */
 .offline-banner {
+  padding: 0.6rem 1.5rem;
+  border-bottom: 1px solid #f0d6a8;
   background: #fff4e0;
   color: #7a4b00;
-  border-bottom: 1px solid #f0d6a8;
-  padding: 0.6rem 1.5rem;
-  text-align: center;
   font-size: 0.95rem;
+  text-align: center;
 }
+
 .pending-badge {
   display: inline-block;
   margin: 0.25rem 0;
   padding: 0.15rem 0.6rem;
+  border-radius: 999px;
   background: #fff4e0;
   color: #7a4b00;
-  border-radius: 999px;
   font-size: 0.85rem;
   font-weight: 600;
-}
-/* Week 9: an installable app must fit a phone screen */
-@media (max-width: 640px) {
-  .header {
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    padding: 0.75rem 1rem;
-  }
-  .nav {
-    flex-wrap: wrap;
-    gap: 0.4rem 1rem;
-    font-size: 0.95rem;
-  }
-  .container {
-    padding: 1rem;
-  }
 }

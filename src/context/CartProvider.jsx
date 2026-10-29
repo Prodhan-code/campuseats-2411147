@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
-import { useLocalStorage } from '../hooks/useLocalStorage.js'
 import { CartContext } from './cart-context.js'
+import { useLocalStorage } from '../hooks/useLocalStorage.js'
 
 function CartProvider({ children }) {
   const [cart, setCart] = useLocalStorage('campuseats-cart', [])
@@ -14,29 +14,29 @@ function CartProvider({ children }) {
   )
 
   function addToCart(item) {
-    setCart((previousCart) => {
-      const existingLine = previousCart.find(
+    setCart((currentCart) => {
+      const existingLine = currentCart.find(
         (line) => line.item.id === item.id
       )
 
       if (existingLine) {
-        return previousCart.map((line) =>
+        return currentCart.map((line) =>
           line.item.id === item.id
             ? { ...line, qty: line.qty + 1 }
             : line
         )
       }
 
-      return [...previousCart, { item, qty: 1 }]
+      return [...currentCart, { item, qty: 1, note: '' }]
     })
   }
 
-  function changeQty(itemId, delta) {
-    setCart((previousCart) =>
-      previousCart
+  function changeQty(itemId, amount) {
+    setCart((currentCart) =>
+      currentCart
         .map((line) =>
           line.item.id === itemId
-            ? { ...line, qty: line.qty + delta }
+            ? { ...line, qty: line.qty + amount }
             : line
         )
         .filter((line) => line.qty > 0)
@@ -44,29 +44,28 @@ function CartProvider({ children }) {
   }
 
   function removeFromCart(itemId) {
-    setCart((previousCart) =>
-      previousCart.filter((line) => line.item.id !== itemId)
+    setCart((currentCart) =>
+      currentCart.filter((line) => line.item.id !== itemId)
+    )
+  }
+
+  function updateNote(itemId, note) {
+    setCart((currentCart) =>
+      currentCart.map((line) =>
+        line.item.id === itemId ? { ...line, note } : line
+      )
     )
   }
 
   function placeOrder(details) {
-    const orderTotal = cart.reduce(
-      (sum, line) => sum + line.item.price * line.qty,
-      0
-    )
-
     const order = {
-      id: `order-${Date.now()}`,
       ...details,
-      items: cart.map((line) => ({
-        item: line.item,
-        qty: line.qty,
-      })),
-      total: orderTotal,
+      items: cart,
+      total,
       placedAt: new Date().toISOString(),
     }
 
-    setOrders((previousOrders) => [order, ...previousOrders])
+    setOrders((currentOrders) => [order, ...currentOrders])
     setCart([])
 
     return order
@@ -81,6 +80,7 @@ function CartProvider({ children }) {
       addToCart,
       changeQty,
       removeFromCart,
+      updateNote,
       placeOrder,
     }),
     [cart, orders, count, total]

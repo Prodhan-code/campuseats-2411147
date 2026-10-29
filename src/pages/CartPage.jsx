@@ -1,16 +1,16 @@
-import { Link, useNavigate } from 'react-router'
 import CartItem from '../components/CartItem.jsx'
 import CheckoutForm from '../components/CheckoutForm.jsx'
 import { useCart } from '../hooks/useCart.js'
 
 function CartPage() {
-  const { cart, total, changeQty, removeFromCart, placeOrder } = useCart()
-  const navigate = useNavigate()
-
-  function handlePlaceOrder(details) {
-    placeOrder(details)
-    navigate('/orders')
-  }
+  const {
+    cart,
+    total,
+    changeQty,
+    removeFromCart,
+    updateNote,
+    placeOrder,
+  } = useCart()
 
   if (cart.length === 0) {
     return (
@@ -18,15 +18,12 @@ function CartPage() {
         <p className="muted">
           Your cart is empty. Pick something from a menu first.
         </p>
-        <Link to="/">Browse vendors</Link>
       </main>
     )
   }
 
   return (
     <main className="container">
-      <h2 className="section-title">Your cart</h2>
-
       <div className="cart-layout">
         <div className="card">
           <ul className="cart-list">
@@ -36,6 +33,7 @@ function CartPage() {
                 line={line}
                 onChangeQty={changeQty}
                 onRemove={removeFromCart}
+                onUpdateNote={updateNote}
               />
             ))}
           </ul>
@@ -43,7 +41,7 @@ function CartPage() {
           <p className="cart-total">Total: RM {total.toFixed(2)}</p>
         </div>
 
-        <CheckoutForm onPlaceOrder={handlePlaceOrder} />
+        <CheckoutForm onPlaceOrder={placeOrder} />
       </div>
     </main>
   )

@@ -6,7 +6,7 @@ function NotFoundPage() {
       <section className="card">
         <h2>404 — Page not found</h2>
         <p className="muted">Sorry, there’s no page at this address.</p>
-        <Link to="/">Go to vendors</Link>
+        <Link to="/">Go to the home page</Link>
       </section>
     </main>
   )

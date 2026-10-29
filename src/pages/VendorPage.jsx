@@ -34,7 +34,7 @@ function VendorPage() {
       </span>
 
       <h3 className="section-title">Menu</h3>
-      <MenuList items={vendor.menu} />
+      <MenuList items={vendor.menu} onAdd={addToCart} />
     </main>
   )
 }

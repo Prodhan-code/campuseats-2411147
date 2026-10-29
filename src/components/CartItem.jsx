@@ -1,5 +1,5 @@
-function CartItem({ line, onChangeQty, onRemove }) {
-  const { item, qty } = line
+function CartItem({ line, onChangeQty, onRemove, onUpdateNote }) {
+  const { item, qty, note = '' } = line
 
   return (
     <li className="cart-line">
@@ -11,15 +11,17 @@ function CartItem({ line, onChangeQty, onRemove }) {
       <div className="qty">
         <button
           type="button"
-          aria-label={`Remove one ${item.name}`}
+          aria-label={`Decrease quantity of ${item.name}`}
           onClick={() => onChangeQty(item.id, -1)}
         >
-          −
+          -
         </button>
+
         <span>{qty}</span>
+
         <button
           type="button"
-          aria-label={`Add one ${item.name}`}
+          aria-label={`Increase quantity of ${item.name}`}
           onClick={() => onChangeQty(item.id, 1)}
         >
           +
@@ -37,6 +39,17 @@ function CartItem({ line, onChangeQty, onRemove }) {
       >
         Remove
       </button>
+
+      <div className="cart-note">
+        <label htmlFor={`note-${item.id}`}>Special instructions</label>
+        <textarea
+          id={`note-${item.id}`}
+          placeholder="For example: no mayonnaise, extra spicy"
+          rows={2}
+          value={note}
+          onChange={(event) => onUpdateNote(item.id, event.target.value)}
+        />
+      </div>
     </li>
   )
 }

@@ -23,6 +23,6 @@ Add a new section every week, before you tag. Did not use AI? Write "None" under
 
 ## Week 4
 - Tool(s): Gemini
-- What I asked for: Help making the custom hooks, sharing the cart with context, and setting up the app pages.
-- What I kept, changed or rejected, and why: I used the examples for my hooks and pages, then adjusted the imports and component names to match my project.
-- One thing the AI got wrong and how I fixed it: The app couldn’t find `react-router` because I hadn’t installed it yet. I installed it with `npm install react-router`.
+- What I asked for: Help setting up the Week 4 features in my CampusEats app, including custom hooks for vendors and cart data, sharing the cart with context, and connecting the pages through navigation.
+- What I kept, changed or rejected, and why: I used the suggested page and navigation code as a guide. I changed parts to fit my project, such as the file imports and how the pages access the cart.
+- One thing the AI got wrong and how I fixed it: The AI first gave me a CartPage that expected the cart data as props, but my app was using cart context. I updated the page to get the cart and its functions from useCart().

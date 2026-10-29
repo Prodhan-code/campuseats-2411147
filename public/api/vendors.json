@@ -14,7 +14,7 @@
           "price": 8.5,
           "category": "Rice",
           "available": true,
-          "popular": true
+          "popular": false
         },
         {
           "id": "2411147-m2",
