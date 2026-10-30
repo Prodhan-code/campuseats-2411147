@@ -16,42 +16,47 @@ function OrdersPage() {
 
   return (
     <main className="container">
-      <section>
-        <h2 className="section-title">My orders</h2>
+      <h2 className="section-title">My orders</h2>
 
-        <ul className="order-list">
-          {orders.map((order, orderIndex) => {
-            const orderItems = order.items ?? order.lines ?? []
+      <ul className="order-list">
+        {orders.map((order, orderIndex) => {
+          const orderItems = order.items ?? order.lines ?? []
 
-            return (
-              <li
-                key={order.id ?? order.placedAt ?? orderIndex}
-                className="card"
-              >
-                <h3>Order {orders.length - orderIndex}</h3>
+          return (
+            <li
+              className="card"
+              key={order.id ?? order.placedAt ?? orderIndex}
+            >
+              <h3>Order {orders.length - orderIndex}</h3>
 
-                <p className="cart-name">
-                  Pickup {order.pickupTime} · Mahallah {order.mahallah}
+              <p>Name: {order.name}</p>
+              <p>Mahallah: {order.mahallah}</p>
+              <p>Pickup time: {order.pickupTime}</p>
+
+              {order.placedAt && (
+                <p className="muted">
+                  Placed: {new Date(order.placedAt).toLocaleString()}
                 </p>
+              )}
 
+              <ul>
                 {orderItems.map((line) => (
-                  <p className="muted" key={line.item.id}>
+                  <li key={line.item.id}>
                     {line.qty} × {line.item.name}
                     {line.note?.trim() && (
-                      <>
-                        <br />
+                      <p className="muted">
                         Special instructions: {line.note}
-                      </>
+                      </p>
                     )}
-                  </p>
+                  </li>
                 ))}
+              </ul>
 
-                <p className="price">RM {order.total.toFixed(2)}</p>
-              </li>
-            )
-          })}
-        </ul>
-      </section>
+              <p className="price">Total: RM {order.total.toFixed(2)}</p>
+            </li>
+          )
+        })}
+      </ul>
     </main>
   )
 }
