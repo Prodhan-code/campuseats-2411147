@@ -54,7 +54,7 @@ body {
   align-items: center;
   gap: 0.4rem;
   padding: 0.45rem 0.6rem;
-  border-radius: 8px;
+  border-radius: 6px;
   color: #fff;
   text-decoration: none;
   transition: background-color 0.2s ease;

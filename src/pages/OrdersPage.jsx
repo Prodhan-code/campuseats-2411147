@@ -15,9 +15,12 @@ function OrdersPage() {
         </div>
       ) : (
         <ul className="order-list">
-          {orders.map((order) => (
-            <li className="card" key={order.id}>
-              <h3>Order {order.id}</h3>
+          {orders.map((order, orderIndex) => (
+            <li
+              className="card"
+              key={order.id ?? order.placedAt ?? orderIndex}
+            >
+              <h3>Order {orders.length - orderIndex}</h3>
               <p>Name: {order.name}</p>
               <p>Mahallah: {order.mahallah}</p>
               <p>Pickup time: {order.pickupTime}</p>
@@ -32,6 +35,11 @@ function OrdersPage() {
                 {order.items.map((line) => (
                   <li key={line.item.id}>
                     {line.qty} × {line.item.name}
+                    {line.note?.trim() && (
+                      <p className="muted">
+                        Special instructions: {line.note}
+                      </p>
+                    )}
                   </li>
                 ))}
               </ul>

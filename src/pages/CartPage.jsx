@@ -1,8 +1,10 @@
+import { useNavigate } from 'react-router'
 import CartItem from '../components/CartItem.jsx'
 import CheckoutForm from '../components/CheckoutForm.jsx'
 import { useCart } from '../hooks/useCart.js'
 
 function CartPage() {
+  const navigate = useNavigate()
   const {
     cart,
     total,
@@ -11,6 +13,11 @@ function CartPage() {
     updateNote,
     placeOrder,
   } = useCart()
+
+  function handlePlaceOrder(details) {
+    placeOrder(details)
+    navigate('/orders')
+  }
 
   if (cart.length === 0) {
     return (
@@ -41,7 +48,7 @@ function CartPage() {
           <p className="cart-total">Total: RM {total.toFixed(2)}</p>
         </div>
 
-        <CheckoutForm onPlaceOrder={placeOrder} />
+        <CheckoutForm onPlaceOrder={handlePlaceOrder} />
       </div>
     </main>
   )
