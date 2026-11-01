@@ -1,3 +1,5 @@
+import SpecialInstructions from './SpecialInstructions.jsx'
+
 function CartItem({ line, onChangeQty, onRemove, onUpdateNote }) {
   const { item, qty, note = '' } = line
 
@@ -28,9 +30,7 @@ function CartItem({ line, onChangeQty, onRemove, onUpdateNote }) {
         </button>
       </div>
 
-      <p className="line-total">
-        RM {(item.price * qty).toFixed(2)}
-      </p>
+      <p className="line-total">RM {(item.price * qty).toFixed(2)}</p>
 
       <button
         type="button"
@@ -40,16 +40,11 @@ function CartItem({ line, onChangeQty, onRemove, onUpdateNote }) {
         Remove
       </button>
 
-      <div className="cart-note">
-        <label htmlFor={`note-${item.id}`}>Special instructions</label>
-        <textarea
-          id={`note-${item.id}`}
-          placeholder="For example: no mayonnaise, extra spicy"
-          rows={2}
-          value={note}
-          onChange={(event) => onUpdateNote(item.id, event.target.value)}
-        />
-      </div>
+      <SpecialInstructions
+        itemId={item.id}
+        note={note}
+        onUpdateNote={onUpdateNote}
+      />
     </li>
   )
 }

@@ -1,4 +1,3 @@
-import { useMemo } from 'react'
 import { CartContext } from './cart-context.js'
 import { useLocalStorage } from '../hooks/useLocalStorage.js'
 
@@ -60,6 +59,7 @@ function CartProvider({ children }) {
   function placeOrder(details) {
     const order = {
       ...details,
+      id: `ord-${Date.now()}`,
       items: cart,
       total,
       placedAt: new Date().toISOString(),
@@ -71,20 +71,17 @@ function CartProvider({ children }) {
     return order
   }
 
-  const value = useMemo(
-    () => ({
-      cart,
-      orders,
-      count,
-      total,
-      addToCart,
-      changeQty,
-      removeFromCart,
-      updateNote,
-      placeOrder,
-    }),
-    [cart, orders, count, total]
-  )
+  const value = {
+    cart,
+    orders,
+    count,
+    total,
+    addToCart,
+    changeQty,
+    removeFromCart,
+    updateNote,
+    placeOrder,
+  }
 
   return (
     <CartContext.Provider value={value}>
