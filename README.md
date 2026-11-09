@@ -19,3 +19,5 @@ If you are developing a production application, we recommend using TypeScript wi
 ## Vendor Credits
 
 Vendors 3–4 from matric number 2410829; Vendor 5 from 2417377; Vendor 6 from 2414121.
+
+Firebase project ID: campuseats-2411147
