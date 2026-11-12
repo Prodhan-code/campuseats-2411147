@@ -63,7 +63,17 @@ body {
 .nav a:hover {
   background-color: rgba(255, 255, 255, 0.14);
 }
+.nav button.link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.6rem;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
 
+.nav button.link:hover {
+  background-color: rgba(255, 255, 255, 0.14);
+}
 .nav a.active {
   box-shadow: none;
   border-bottom: 2px solid #fff;
@@ -562,4 +572,26 @@ a.card {
   color: #7a4b00;
   font-size: 0.85rem;
   font-weight: 600;
+}
+
+.welcome-title {
+  margin: 1rem 0 1.5rem;
+  font-size: 1.5rem;
+}
+
+.auth-page .auth-link {
+  align-self: flex-start;
+  color: var(--green);
+  text-decoration: underline;
+}
+
+.auth-page .auth-link:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.success-message {
+  margin: 0.25rem 0;
+  color: #167a3f;
+  font-size: 0.9rem;
 }

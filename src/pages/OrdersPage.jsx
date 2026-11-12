@@ -33,12 +33,12 @@ function OrdersPage() {
               <p>Mahallah: {order.mahallah}</p>
               <p>Pickup time: {order.pickupTime}</p>
 
-              {order.placedAt && (
-                <p className="muted">
-                  Placed: {new Date(order.placedAt).toLocaleString()}
-                </p>
-              )}
-
+              {(order.placedAt || order.createdAt) && (
+                    <p className="muted">
+                      Placed:{' '}
+                      {new Date(order.placedAt || order.createdAt).toLocaleString()}
+                    </p>
+                  )}
               <ul>
                 {orderItems.map((line) => (
                   <li key={line.item.id}>

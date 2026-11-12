@@ -1,6 +1,8 @@
+import { useAuth } from '../hooks/useAuth.js'
 import SpecialInstructions from './SpecialInstructions.jsx'
 
 function CartItem({ line, onChangeQty, onRemove, onUpdateNote }) {
+  const { user } = useAuth()
   const { item, qty, note = '' } = line
 
   return (
@@ -13,24 +15,24 @@ function CartItem({ line, onChangeQty, onRemove, onUpdateNote }) {
       <div className="qty">
         <button
           type="button"
-          aria-label={`Decrease quantity of ${item.name}`}
+          aria-label={`Decrease ${item.name} quantity`}
           onClick={() => onChangeQty(item.id, -1)}
         >
-          -
+          −
         </button>
-
         <span>{qty}</span>
-
         <button
           type="button"
-          aria-label={`Increase quantity of ${item.name}`}
+          aria-label={`Increase ${item.name} quantity`}
           onClick={() => onChangeQty(item.id, 1)}
         >
           +
         </button>
       </div>
 
-      <p className="line-total">RM {(item.price * qty).toFixed(2)}</p>
+      <p className="line-total">
+        RM {(item.price * qty).toFixed(2)}
+      </p>
 
       <button
         type="button"
@@ -44,6 +46,7 @@ function CartItem({ line, onChangeQty, onRemove, onUpdateNote }) {
         itemId={item.id}
         note={note}
         onUpdateNote={onUpdateNote}
+        user={user}
       />
     </li>
   )
