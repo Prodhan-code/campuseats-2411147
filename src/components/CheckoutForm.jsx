@@ -1,60 +1,60 @@
-import { useState } from 'react'
+import { useState } from "react";
 
 const MAHALLAHS = [
-  'Ali',
-  'Aminah',
-  'Faruq',
-  'Asiah',
-  'Bilal',
-  'Hafsa',
-  'Uthman',
-  'Zubair',
-]
+  "Ali",
+  "Aminah",
+  "Faruq",
+  "Asiah",
+  "Bilal",
+  "Hafsa",
+  "Uthman",
+  "Zubair",
+];
 
 function validate(values) {
-  const errors = {}
+  const errors = {};
 
   if (values.name.trim().length < 3) {
-    errors.name = 'Enter your name (at least 3 characters).'
+    errors.name = "Enter your name (at least 3 characters).";
   }
 
   if (!values.mahallah) {
-    errors.mahallah = 'Please choose your mahallah.'
+    errors.mahallah = "Please choose your mahallah.";
   }
 
   if (!values.pickupTime) {
-    errors.pickupTime = 'Please choose a pickup time.'
-  } else if (values.pickupTime < '07:00' || values.pickupTime > '22:00') {
-    errors.pickupTime = 'Pickup time must be between 07:00 and 22:00.'
+    errors.pickupTime = "Please choose a pickup time.";
+  } else if (values.pickupTime < "07:00" || values.pickupTime > "22:00") {
+    errors.pickupTime = "Pickup time must be between 07:00 and 22:00.";
   }
 
-  return errors
+  return errors;
 }
 
-function CheckoutForm({ onPlaceOrder }) {
+function CheckoutForm({ defaultName = "", onPlaceOrder }) {
   const [values, setValues] = useState({
-    name: '',
-    mahallah: '',
-    pickupTime: '',
-  })
-  const [errors, setErrors] = useState({})
+    name: defaultName,
+    mahallah: "",
+    pickupTime: "",
+  });
+  const [errors, setErrors] = useState({});
 
   function handleChange(event) {
-    const { name, value } = event.target
+    const { name, value } = event.target;
     setValues((previousValues) => ({
       ...previousValues,
       [name]: value,
-    }))
+    }));
   }
 
   function handleSubmit(event) {
-    event.preventDefault()
+    event.preventDefault();
 
-    const foundErrors = validate(values)
-    setErrors(foundErrors)
+    const foundErrors = validate(values);
+    setErrors(foundErrors);
 
     if (Object.keys(foundErrors).length === 0) {
-      onPlaceOrder(values)
+      onPlaceOrder(values);
     }
   }
 
@@ -98,15 +98,13 @@ function CheckoutForm({ onPlaceOrder }) {
         onChange={handleChange}
         aria-invalid={Boolean(errors.pickupTime)}
       />
-      {errors.pickupTime && (
-        <p className="field-error">{errors.pickupTime}</p>
-      )}
+      {errors.pickupTime && <p className="field-error">{errors.pickupTime}</p>}
 
       <button type="submit" className="btn">
         Place order
       </button>
     </form>
-  )
+  );
 }
 
-export default CheckoutForm
+export default CheckoutForm;

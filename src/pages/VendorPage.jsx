@@ -1,42 +1,49 @@
-import { Link, useParams } from 'react-router'
-import { useVendors } from '../hooks/useVendors.js'
-import { useCart } from '../hooks/useCart.js'
-import { Loading, ErrorMessage } from '../components/Status.jsx'
-import MenuList from '../components/MenuList.jsx'
+import { Link, useParams } from "react-router";
+import { useVendor } from "../hooks/useVendor.js";
+import { useCart } from "../hooks/useCart.js";
+import MenuList from "../components/MenuList.jsx";
+import { Loading, ErrorMessage } from "../components/Status.jsx";
 
 function VendorPage() {
-  const { id } = useParams()
-  const { vendors, loading, error, reload } = useVendors()
-  const { addToCart } = useCart()
+  const { id } = useParams();
+  const { vendor, menu, loading, error } = useVendor(id);
+  const { addToCart } = useCart();
 
-  if (loading) return <Loading />
-  if (error) return <ErrorMessage message={error} onRetry={reload} />
+  if (loading) return <Loading />;
 
-  const vendor = vendors.find((item) => item.id === id)
+  if (error) {
+    return (
+      <ErrorMessage message={error} onRetry={() => window.location.reload()} />
+    );
+  }
 
   if (!vendor) {
     return (
-      <main className="container">
-        <h2>Vendor not found</h2>
-        <Link to="/">Back to vendors</Link>
-      </main>
-    )
+      <p>
+        Vendor not found. <Link to="/">Back to vendors</Link>
+      </p>
+    );
   }
 
-  return (
-    <main className="container">
-      <p><Link to="/">← Back to vendors</Link></p>
-      <h2 className="section-title">{vendor.name}</h2>
-      <p className="muted">{vendor.location}</p>
-      <p className="muted">Open: {vendor.openHours}</p>
-      <span className={vendor.isOpen ? 'status open' : 'status closed'}>
-        {vendor.isOpen ? 'Open now' : 'Closed'}
-      </span>
+  // Each cart item needs vendor details so orders can be grouped by vendor.
+  const items = menu.map((item) => ({
+    ...item,
+    vendorName: vendor.name,
+  }));
 
-      <h3 className="section-title">Menu</h3>
-      <MenuList items={vendor.menu} onAdd={addToCart} />
-    </main>
-  )
+  return (
+    <section>
+      <p>
+        <Link to="/">← All vendors</Link>
+      </p>
+      <h2 className="section-title">{vendor.name}</h2>
+      <p className="muted">
+        {vendor.location} · {vendor.openHours}
+      </p>
+
+      <MenuList items={items} onAdd={addToCart} />
+    </section>
+  );
 }
 
-export default VendorPage
+export default VendorPage;

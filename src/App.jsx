@@ -1,15 +1,16 @@
-import { BrowserRouter, Route, Routes } from 'react-router'
-import { AuthProvider } from './context/AuthProvider.jsx'
-import CartProvider from './context/CartProvider.jsx'
-import Layout from './components/Layout.jsx'
-import ProtectedRoute from './components/ProtectedRoute.jsx'
-import HomePage from './pages/HomePage.jsx'
-import VendorPage from './pages/VendorPage.jsx'
-import LoginPage from './pages/LoginPage.jsx'
-import RegisterPage from './pages/RegisterPage.jsx'
-import CartPage from './pages/CartPage.jsx'
-import OrdersPage from './pages/OrdersPage.jsx'
-import NotFoundPage from './pages/NotFoundPage.jsx'
+import { BrowserRouter, Route, Routes } from "react-router";
+import { AuthProvider } from "./context/AuthProvider.jsx";
+import CartProvider from "./context/CartProvider.jsx";
+import Layout from "./components/Layout.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import VendorPage from "./pages/VendorPage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
+import RegisterPage from "./pages/RegisterPage.jsx";
+import CartPage from "./pages/CartPage.jsx";
+import OrdersPage from "./pages/OrdersPage.jsx";
+import NotFoundPage from "./pages/NotFoundPage.jsx";
+import SeedPage from "./pages/SeedPage.jsx";
 
 function App() {
   return (
@@ -23,10 +24,12 @@ function App() {
               <Route path="login" element={<LoginPage />} />
               <Route path="register" element={<RegisterPage />} />
 
-              {/* Guests can view their cart and see the note sign-in prompt. */}
+              {import.meta.env.DEV && (
+                <Route path="seed" element={<SeedPage />} />
+              )}
+
               <Route path="cart" element={<CartPage />} />
 
-              {/* Order history still requires a signed-in user. */}
               <Route element={<ProtectedRoute />}>
                 <Route path="orders" element={<OrdersPage />} />
               </Route>
@@ -37,7 +40,7 @@ function App() {
         </CartProvider>
       </AuthProvider>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;

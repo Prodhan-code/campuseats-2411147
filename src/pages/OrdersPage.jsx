@@ -1,64 +1,118 @@
-import { Link } from 'react-router'
-import { useCart } from '../hooks/useCart.js'
+import { Link } from "react-router";
+import { Loading, ErrorMessage } from "../components/Status.jsx";
+import OrderStatus from "../components/OrderStatus.jsx";
+import OrderActions from "../components/OrderActions.jsx";
+import { useMyOrders } from "../hooks/useMyOrders.js";
+
+function formatPlacedDate(createdAt) {
+  if (!createdAt) return "Just now";
+
+  const date = createdAt.toDate ? createdAt.toDate() : new Date(createdAt);
+
+  if (Number.isNaN(date.getTime())) return "Just now";
+
+  return date.toLocaleString("en-MY", {
+    dateStyle: "medium",
+    timeStyle: "short",
+  });
+}
 
 function OrdersPage() {
-  const { orders } = useCart()
+  const { orders, loading, error } = useMyOrders();
 
-  if (orders.length === 0) {
-    return (
-      <main className="container">
-        <p className="muted">
-          No orders yet. <Link to="/">Browse vendors</Link>
-        </p>
-      </main>
-    )
-  }
+  if (loading) return <Loading />;
+  if (error) return <ErrorMessage message={error} />;
 
   return (
     <main className="container">
       <h2 className="section-title">My orders</h2>
 
-      <ul className="order-list">
-        {orders.map((order, orderIndex) => {
-          const orderItems = order.items ?? order.lines ?? []
+      {orders.length === 0 ? (
+        <section className="card">
+          <p className="muted">You haven’t placed any orders yet.</p>
+          <Link to="/">Browse vendors</Link>
+        </section>
+      ) : (
+        <ul className="order-list">
+          {orders.map((order, orderIndex) => {
+            const items = order.items ?? order.lines ?? [];
 
-          return (
-            <li
-              className="card"
-              key={order.id ?? order.placedAt ?? orderIndex}
-            >
-              <h3>Order {orders.length - orderIndex}</h3>
-
-              <p>Name: {order.name}</p>
-              <p>Mahallah: {order.mahallah}</p>
-              <p>Pickup time: {order.pickupTime}</p>
-
-              {(order.placedAt || order.createdAt) && (
-                    <p className="muted">
-                      Placed:{' '}
-                      {new Date(order.placedAt || order.createdAt).toLocaleString()}
+            return (
+              <li className="card order-card" key={order.id}>
+                <div className="order-heading">
+                  <div>
+                    <p className="muted order-label">
+                      ORDER {orders.length - orderIndex}
                     </p>
-                  )}
-              <ul>
-                {orderItems.map((line) => (
-                  <li key={line.item.id}>
-                    {line.qty} × {line.item.name}
-                    {line.note?.trim() && (
-                      <p className="muted">
-                        Special instructions: {line.note}
-                      </p>
-                    )}
-                  </li>
-                ))}
-              </ul>
+                    <h3>{order.vendorName ?? "CampusEats order"}</h3>
+                  </div>
 
-              <p className="price">Total: RM {order.total.toFixed(2)}</p>
-            </li>
-          )
-        })}
-      </ul>
+                  <div>
+                    <OrderStatus status={order.status ?? "Received"} />
+                    {order.status === "Received" && (
+                      <OrderActions order={order} />
+                    )}
+                  </div>
+                </div>
+
+                <div className="order-details">
+                  <p>
+                    <span>Mahallah</span>
+                    <strong>{order.mahallah ?? "—"}</strong>
+                  </p>
+                  <p>
+                    <span>Pickup time</span>
+                    <strong>{order.pickupTime ?? "—"}</strong>
+                  </p>
+                  <p>
+                    <span>Placed</span>
+                    <strong>
+                      {formatPlacedDate(order.createdAt ?? order.placedAt)}
+                    </strong>
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="order-items-title">Items</h4>
+                  <ul className="order-items">
+                    {items.map((item, itemIndex) => {
+                      const name = item.name ?? item.item?.name ?? "Item";
+                      const note = item.note ?? item.item?.note ?? "";
+
+                      return (
+                        <li
+                          className="order-item"
+                          key={
+                            item.itemId ??
+                            item.item?.id ??
+                            `${order.id}-${itemIndex}`
+                          }
+                        >
+                          <p>
+                            {item.qty} × {name}
+                          </p>
+
+                          {note.trim() && (
+                            <p className="muted order-note">
+                              Special instructions: {note}
+                            </p>
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+
+                <p className="price order-total">
+                  Total: RM {Number(order.total ?? 0).toFixed(2)}
+                </p>
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </main>
-  )
+  );
 }
 
-export default OrdersPage
+export default OrdersPage;

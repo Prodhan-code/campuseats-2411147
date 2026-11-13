@@ -1,26 +1,30 @@
-import { Link, useNavigate } from 'react-router'
-import CartItem from '../components/CartItem.jsx'
-import CheckoutForm from '../components/CheckoutForm.jsx'
-import { useAuth } from '../hooks/useAuth.js'
-import { useCart } from '../hooks/useCart.js'
+import { useState } from "react";
+import { Link, useNavigate } from "react-router";
+import CartItem from "../components/CartItem.jsx";
+import CheckoutForm from "../components/CheckoutForm.jsx";
+import { useAuth } from "../hooks/useAuth.js";
+import { useCart } from "../hooks/useCart.js";
+import { placeOrders } from "../services/orders.js";
 
 function CartPage() {
-  const navigate = useNavigate()
-  const { user, loading: authLoading } = useAuth()
-  const {
-    cart,
-    total,
-    changeQty,
-    removeFromCart,
-    updateNote,
-    placeOrder,
-  } = useCart()
+  const navigate = useNavigate();
+  const { user, loading: authLoading } = useAuth();
+  const { cart, total, changeQty, removeFromCart, updateNote, clearCart } =
+    useCart();
+  const [error, setError] = useState("");
 
-  function handlePlaceOrder(details) {
-    if (!user) return
+  async function handlePlaceOrder(details) {
+    if (!user) return;
 
-    placeOrder(details)
-    navigate('/orders')
+    setError("");
+
+    try {
+      await placeOrders(user, cart, details);
+      clearCart();
+      navigate("/orders");
+    } catch (err) {
+      setError(`Could not place the order: ${err.message}`);
+    }
   }
 
   if (cart.length === 0) {
@@ -30,7 +34,7 @@ function CartPage() {
           Your cart is empty. <Link to="/">Browse vendors</Link>
         </p>
       </main>
-    )
+    );
   }
 
   return (
@@ -57,7 +61,18 @@ function CartPage() {
             <p className="muted">Checking your sign-in…</p>
           </section>
         ) : user ? (
-          <CheckoutForm onPlaceOrder={handlePlaceOrder} />
+          <>
+            {error && (
+              <p className="field-error" role="alert">
+                {error}
+              </p>
+            )}
+
+            <CheckoutForm
+              defaultName={user?.displayName ?? ""}
+              onPlaceOrder={handlePlaceOrder}
+            />
+          </>
         ) : (
           <section className="card">
             <h2>Checkout</h2>
@@ -68,7 +83,7 @@ function CartPage() {
         )}
       </div>
     </main>
-  )
+  );
 }
 
-export default CartPage
+export default CartPage;
